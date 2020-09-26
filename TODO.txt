@@ -1,0 +1,10 @@
+documentation :
+-> logger
+-> OGL
+-> network
+-> concurency
+
+OGL->KeyBoardHandler-> check if it was process once before remove it
+
+add crypto subdir
+---> add network extension that use this crypto
