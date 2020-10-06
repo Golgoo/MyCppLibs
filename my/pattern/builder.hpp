@@ -25,7 +25,9 @@ class Builder{
         : _instance(std::move(instance_factory->create()))
         , _instance_factory(instance_factory)
         , _operations()
-        {}
+        {
+            init_operations();
+        }
     private:
         inline void reset(){
             _instance = std::shared_ptr<T>(_instance_factory->create());
