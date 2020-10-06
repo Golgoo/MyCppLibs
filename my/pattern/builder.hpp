@@ -26,16 +26,13 @@ class Builder{
         , _instance_factory(instance_factory)
         , _operations()
         {
-            init_operations();
         }
+    
     private:
         inline void reset(){
             _instance = std::shared_ptr<T>(_instance_factory->create());
         }
     
-    private:
-        virtual void init_operations() = 0 ;
-
     public:
         /**
          * @brief The build of the current instance is finished and returned.

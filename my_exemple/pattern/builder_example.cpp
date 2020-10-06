@@ -48,10 +48,12 @@ class ClassToBuildBuilder : public my::pattern::Builder<ClassToBuild>
     public:
         ClassToBuildBuilder(my::pattern::Factory<ClassToBuild>& factory)
         : Builder(&factory)
-        {}
+        {
+            init_operations();
+        }
     private:
-    //Init the builder's operations OR you can init them rawly
-        void init_operations() override{
+        //Init the builder's operations OR you can init them rawly
+        void init_operations(){
             registerBuildingOperation(BuilderOperation::SINGLE_VALUE, [](ClassToBuild &classToBuild){
                 classToBuild.single_value = 5 ;
             });
@@ -67,7 +69,7 @@ int main(void)
 {
     std::cout << "Creating the first instance with the builder" << std::endl ;
     std::unique_ptr<my::pattern::Builder<ClassToBuild>> builder (new ClassToBuildBuilder(factory));
-    //Init the builder's operations OR you can init them in the extension of Builder<ClassToBuild>
+    //Init the builder's operations OR you can init them in the Builder's extension
     {
         builder->registerBuildingOperation(BuilderOperation::SINGLE_VALUE, [](ClassToBuild &classToBuild){
             classToBuild.single_value = 5 ;
